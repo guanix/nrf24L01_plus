@@ -1,5 +1,7 @@
 # nrf24L01+ Radio Library
 
+This version has been modified for Arduino. The README is not yet updated for that.
+
 This library is probably not the most efficient way of using the nrf24L01+ modules but probably the most portable and the basic one.
 
 This library enables the auto acknowledgement and auto retransmission features of the nrf24L01+ in static length payload mode. 
