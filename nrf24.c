@@ -13,11 +13,13 @@
 */
 #include "nrf24.h"
 
-uint8_t payload_len;
+uint8_t payload_len, ce_pin, csn_pin;
 
 /* init the hardware pins */
-void nrf24_init() 
+void nrf24_init(uint8_t ce, uint8_t csn) 
 {
+    ce_pin = ce;
+    csn_pin = csn;
     nrf24_setupPins();
     nrf24_ce_digitalWrite(LOW);
     nrf24_csn_digitalWrite(HIGH);    
@@ -223,7 +225,7 @@ uint8_t nrf24_lastMessageStatus()
     /* Transmission went OK */
     if((rv & ((1 << TX_DS))))
     {
-        return NRF24_TRANSMISSON_OK;
+        return NRF24_TRANSMISSION_OK;
     }
     /* Maximum retransmission count is reached */
     /* Last message probably went missing ... */

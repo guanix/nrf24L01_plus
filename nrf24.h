@@ -23,11 +23,15 @@
 #define nrf24_ADDR_LEN 5
 #define nrf24_CONFIG ((1<<EN_CRC)|(0<<CRCO))
 
-#define NRF24_TRANSMISSON_OK 0
+#define NRF24_TRANSMISSION_OK 0
 #define NRF24_MESSAGE_LOST   1
 
+#ifdef __cplusplus 
+extern "C" {
+#endif
+
 /* adjustment functions */
-void    nrf24_init();
+void    nrf24_init(uint8_t ce, uint8_t csn);
 void    nrf24_rx_address(uint8_t* adr);
 void    nrf24_tx_address(uint8_t* adr);
 void    nrf24_config(uint8_t channel, uint8_t pay_length);
@@ -112,5 +116,9 @@ extern void nrf24_mosi_digitalWrite(uint8_t state);
 /* - returns: Non-zero if the pin is high */
 /* -------------------------------------------------------------------------- */
 extern uint8_t nrf24_miso_digitalRead();
+
+#ifdef __cplusplus 
+}
+#endif
 
 #endif
